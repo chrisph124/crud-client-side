@@ -1,0 +1,69 @@
+<h3>Add Customer</h3>
+<div [hidden]="submitted">
+  <form #newCustomerForm="ngForm">
+    <div class="form-group d-flex justify-content-center flex-column">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        [(ngModel)]="customer.firstname"
+        name="firstname"
+        #firstname="ngModel"
+        style="width: 300px; align-self: center;"
+        required>
+      <div
+        [hidden]="firstname.valid || firstname.pristine"
+        class="alert alert-danger">
+          First Name is required
+      </div>
+    </div>
+    <div class="form-group d-flex justify-content-center flex-column">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        [(ngModel)]="customer.lastname"
+        name="lastname"
+        #lastname="ngModel"
+        style="width: 300px; align-self: center;"
+        required>
+      <div
+        [hidden]="lastname.valid || lastname.pristine"
+        class="alert alert-danger">
+          Last Name is required
+      </div>
+    </div>
+    <div class="form-group d-flex justify-content-center flex-column">
+      <label for="age">Age</label>
+      <input
+        type="text"
+        class="form-control"
+        id="age"
+        [(ngModel)]="customer.age"
+        name="age"
+        #age="ngModel"
+        style="width: 300px; align-self: center;"
+        required>
+      <div
+        [hidden]="age.valid || age.pristine"
+        class="alert alert-danger">
+          Age is required
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-dark" type="button" (click)="goBack()">Back</button>
+      <button class="btn btn-dark" type="button" (click)="addCustomer(customer)" [disabled]="!newCustomerForm.form.valid">Create</button>
+    </div>
+  </form>
+</div>
+<div [hidden]="!submitted">
+  <p>Submitted Successfully! <span class="badge badge-light">{{customer._id}}</span> ->
+  <span>{{customer.firstname}} {{customer.lastname}}</span></p>
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-dark" type="button" (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-dark" (click)="newCustomer(); newCustomerForm.reset()">Continue</button>
+  </div>
+</div>

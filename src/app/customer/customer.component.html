@@ -1,0 +1,5 @@
+<h5>All Customers</h5>
+<div *ngFor="let customer of customers; let rowIndex=index" class="d-flex justify-content-center">
+  <a [routerLink]="['/customers', customer._id]" style="color:black; margin-left: 7%" class="col-md-2 text-left">
+    <span class="badge badge-dark">{{rowIndex + 1}}</span> -> {{customer.firstname}}</a>
+</div>
